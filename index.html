@@ -1,1 +1,29 @@
-
+<!DOCTYPE html>
+<html lang="de">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Handy Zugriff</title>
+</head>
+<body>
+ <h1>Handy Zugriff</h1>
+ <p>Scanne diesen QR-Code, um Zugriff auf dein Handy zu gewähren.</p>
+ <script>
+ // Überprüfe, ob der Benutzer den QR-Code gescannt hat
+ if (window.location.hash === '#access') {
+ // Hier kannst du den Code einfügen, um Zugriff auf das Handy zu erhalten
+ // Beispiel: Abrufen der Kamera
+ navigator.mediaDevices.getUserMedia({ video: true })
+ .then(stream => {
+ const video = document.createElement('video');
+ video.srcObject = stream;
+ video.play();
+ document.body.appendChild(video);
+ })
+ .catch(err => {
+ console.error('Fehler beim Zugriff auf die Kamera: ', err);
+ });
+ }
+ </script>
+</body>
+</html>
